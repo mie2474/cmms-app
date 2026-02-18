@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Work Orders</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+<h2>Work Orders</h2>
+
+<button onclick="toggleForm()">+ Create Work Order</button>
+<button onclick="loadWorkOrders()">Refresh</button>
+
+<br><br>
+
+<div id="formContainer" style="display:none; border:1px solid #ccc; padding:15px;">
+    <h3>Create Work Order</h3>
+
+    <input type="text" id="woTitle" placeholder="Title"><br><br>
+
+    <textarea id="woDescription" placeholder="Description"></textarea><br><br>
+
+    <label>Asset:</label><br>
+    <select id="woAsset"></select><br><br>
+
+    <label>Priority:</label><br>
+    <select id="woPriority"></select><br><br>
+
+    <label>Problem Code:</label><br>
+    <select id="woProblemCode"></select><br><br>
+
+    <button onclick="createWorkOrder()">Submit</button>
+</div>
+
+<br>
+
+<table border="1" width="100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Asset</th>
+            <th>Priority</th>
+            <th>Problem</th>
+            <th>Assigned</th>
+            <th>Created By</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody id="woTable"></tbody>
+</table>
+
+<script src="/static/js/workorders.js"></script>
+
+</body>
+</html>

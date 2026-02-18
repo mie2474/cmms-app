@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processing Login...</title>
+</head>
+<body>
+    <h2>Logging in...</h2>
+
+    <script>
+        async function handleCallback() {
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get("code");
+
+            const tokenResponse = await fetch(
+                "https://integrator-4524975.okta.com/oauth2/default/v1/token",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: new URLSearchParams({
+                        grant_type: "authorization_code",
+                        client_id: "0oaztzq5fkzunQQbk697",
+                        client_secret: "yCER9u2TRGVnSICerEeyb8r2ZVpVtKxvVlH5kHTIIMCFbL50mTbtNF5YlD68hUed",
+                        redirect_uri: "http://127.0.0.1:8000/callback",
+                        code: code,
+                    }),
+                }
+            );
+
+            const data = await tokenResponse.json();
+
+            localStorage.setItem("token", data.access_token);
+
+            window.location.href = "/static/dashboard.html";
+        }
+
+        handleCallback();
+    </script>
+</body>
+</html>

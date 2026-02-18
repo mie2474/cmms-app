@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CMMS Login</title>
+</head>
+<body>
+    <h1>CMMS</h1>
+
+    <button onclick="login()">Login with Okta</button>
+
+    <script>
+        function login() {
+            const clientId = "0oaztzq5fkzunQQbk697";
+            const redirectUri = "http://127.0.0.1:8000/callback";
+            const issuer = "https://integrator-4524975.okta.com/oauth2/default";
+
+            const authorizeUrl =
+                `${issuer}/v1/authorize?` +
+                `client_id=${clientId}` +
+                `&response_type=code` +
+                `&scope=openid profile email` +
+                `&redirect_uri=${encodeURIComponent(redirectUri)}` +
+                `&state=abc123`;
+
+            window.location.href = authorizeUrl;
+        }
+    </script>
+</body>
+</html>

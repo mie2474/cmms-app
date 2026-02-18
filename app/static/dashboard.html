@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <script>
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token");
+
+if (token) {
+    localStorage.setItem("token", token);
+    window.history.replaceState({}, document.title, "/static/dashboard.html");
+}
+</script>
+
+    <h2>CMMS Dashboard</h2>
+
+    <ul>
+        <li><a href="/static/assets.html">Assets</a></li>
+        <li><a href="/static/workorders.html">Work Orders</a></li>
+    </ul>
+</body>
+</html>
